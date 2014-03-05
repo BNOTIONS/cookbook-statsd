@@ -1,0 +1,12 @@
+description "statsd service"
+
+start on runlevel [2345]
+stop on runlevel [016]
+setuid <%= node[:statsd][:user] %>
+
+console log
+
+env PATH=/usr/bin:/usr/local/bin:<%= node[:statsd][:path] %>/bin
+chdir <%= node[:statsd][:path] %>
+
+exec statsd <%= node[:statsd][:config_path] %>/config.js
