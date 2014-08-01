@@ -46,8 +46,8 @@ if platform?('ubuntu')
 end
 
 unless node[:statsd][:graphite_server_role].nil?
-  graphite_server = search(:node, "role:#{node[:statsd][:graphite_server_role]} AND chef_environment:#{node.chef_environment}")
-  node[:statsd][:graphite_host] = graphite_server.first[:ipaddress]
+  graphite_server = search(:node, "role:#{node[:statsd][:graphite_server_role]} AND chef_environment:#{node[:graphite_server_environment]}")
+  node.default[:statsd][:graphite_host] = graphite_server.first[:ipaddress]
 end
 
 template "#{node[:statsd][:config_path]}/config.js" do

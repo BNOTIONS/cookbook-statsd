@@ -14,3 +14,4 @@ default[:statsd][:graphite_host]    = 'localhost'
 default[:statsd][:graphite_port]    = 2003
 
 default[:statsd][:graphite_server_role] = nil
+default[:statsd][:graphite_server_environment] = node.chef_environment
