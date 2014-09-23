@@ -1,0 +1,11 @@
+name             'statsd'
+maintainer       'BNOTIONS'
+maintainer_email 'devops@bnotions.com'
+license          'Proprietary - All Rights Reserved'
+description      'Installs/Configures statsd'
+long_description 'Installs/Configures statsd'
+version          '0.1.5'
+
+depends 'build-essential'
+depends 'nodejs'
+depends 'git'
