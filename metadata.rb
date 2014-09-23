@@ -1,13 +1,11 @@
 name             'statsd'
 maintainer       'BNOTIONS'
-maintainer_email 'jonathon@bnotions.com'
-license          'All rights reserved'
+maintainer_email 'devops@bnotions.com'
+license          'Proprietary - All Rights Reserved'
 description      'Installs/Configures statsd'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.1'
-
-supports 'ubuntu'
+long_description 'Installs/Configures statsd'
+version          '0.1.5'
 
 depends 'build-essential'
+depends 'nodejs'
 depends 'git'
-depends 'node'

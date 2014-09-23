@@ -1,0 +1,20 @@
+---
+driver:
+  require_chef_omnibus: latest
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[statsd::default]
+      - recipe[chef_handler::default]
+      - recipe[chef_handler::json_file]
+    attributes: {
+    }

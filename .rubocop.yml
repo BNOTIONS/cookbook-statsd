@@ -1,0 +1,12 @@
+
+StringLiterals:
+  Enabled: true
+
+LineLength:
+  Enabled: false
+
+GlobalVars:
+  Enabled: false
+
+BracesAroundHashParameters:
+  Enabled: false
