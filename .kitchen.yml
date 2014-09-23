@@ -1,17 +1,7 @@
 ---
-# kitchen-vagrant
-#driver:
-#  name: vagrant
-#  require_chef_omnibus: latest
-#  network:
-#    - ["private_network", {ip: "33.33.33.10"}]
-
-# kitchen-docker
 driver:
-  name: docker
-  socket: tcp://127.0.0.1:2375
-  use_sudo: false
-  remove_images: true
+  require_chef_omnibus: latest
+  name: vagrant
 
 provisioner:
   name: chef_zero

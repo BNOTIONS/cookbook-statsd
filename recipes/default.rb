@@ -41,9 +41,14 @@ execute 'npm install' do
 end
 
 template '/etc/init/statsd.conf' do
-  source 'upstart.conf.erb'
-  mode   00644
-  action :create
+  source    'upstart.conf.erb'
+  mode      00644
+  variables ({
+    user:         node['statsd']['user'],
+    config_path:  node['statsd']['config_path'],
+    install_path: node['statsd']['install_path']
+  })
+  action   :create
 end
 
 service 'statsd' do
@@ -56,14 +61,14 @@ service 'statsd' do
 end
 
 unless node['statsd']['graphite_role'].nil?
-  graphite_server = search(:node, node['graphite_search_query']) % {graphite_role: node['graphite_role'], chef_environment: node.chef_environment}
+  graphite_server = search(:node, node['graphite_search_query']) % { graphite_role: node['graphite_role'], chef_environment: node.chef_environment }
   node.default['statsd']['graphite_host'] = graphite_server.first['ipaddress']
 end
 
 template ::File.join(node['statsd']['config_path'], 'config.js') do
   source    'config.js.erb'
   mode      00644
-  variables({
+  variables ({
     config: {
       port:           node['statsd']['port'],
       flushInterval:  node['statsd']['flush_interval'],

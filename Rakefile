@@ -15,7 +15,7 @@ namespace :cookbook do
 
   desc 'run spec test suite'
   task :spec do
-    [:spec, :kitchen].each do |t|
+    [:chefspec, :kitchen].each do |t|
       Rake::Task["cookbook:#{t}"].execute
     end
   end
