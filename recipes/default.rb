@@ -61,7 +61,7 @@ service 'statsd' do
 end
 
 unless node['statsd']['graphite_role'].nil?
-  graphite_server = search(:node, node['graphite_search_query']) % { graphite_role: node['graphite_role'], chef_environment: node.chef_environment }
+  graphite_server = search(:node, node['statsd']['graphite_search_query']) % { graphite_role: node['statsd']['graphite_role'], chef_environment: node.chef_environment }
   node.default['statsd']['graphite_host'] = graphite_server.first['ipaddress']
 end
 
