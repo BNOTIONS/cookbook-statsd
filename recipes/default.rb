@@ -17,10 +17,9 @@ end
 
 user node['statsd']['user'] do
   group  node['statsd']['group']
-  shell  '/bin/bash'
-  home   node['statsd']['install_path']
+  shell  '/bin/false'
   system true
-  action :create
+  action [:manage, :create]
 end
 
 directory node['statsd']['config_path'] do
